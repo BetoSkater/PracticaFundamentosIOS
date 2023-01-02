@@ -99,8 +99,7 @@
 		D3BE58062962EA9A00837903 /* PracticaFundamentosIOS */ = {
 			isa = PBXGroup;
 			children = (
-				D3BE58072962EA9A00837903 /* AppDelegate.swift */,
-				D3BE58092962EA9A00837903 /* SceneDelegate.swift */,
+				D3BE58372962ED3600837903 /* App */,
 				D3BE580B2962EA9A00837903 /* ViewController.swift */,
 				D3BE580D2962EA9A00837903 /* Main.storyboard */,
 				D3BE58102962EA9B00837903 /* Assets.xcassets */,
@@ -125,6 +124,15 @@
 				D3BE582A2962EA9B00837903 /* PracticaFundamentosIOSUITestsLaunchTests.swift */,
 			);
 			path = PracticaFundamentosIOSUITests;
+			sourceTree = "<group>";
+		};
+		D3BE58372962ED3600837903 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D3BE58072962EA9A00837903 /* AppDelegate.swift */,
+				D3BE58092962EA9A00837903 /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
