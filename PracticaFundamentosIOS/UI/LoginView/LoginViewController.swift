@@ -26,14 +26,38 @@ class LoginViewController: BaseViewController {
 
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         
-        //-TODO: Esto iria dentro del async de DispathQueue
+        guard let email = emailTextField.text, !email.isEmpty else{
+            print("Error: email field is empty.")
+            return
+        }
+        guard let password = passwordTextField.text, !password.isEmpty else{
+            print("Error: password field is empty")
+            return
+        }
         
-        UIApplication
-            .shared
-            .connectedScenes
-            .compactMap { ($0 as? UIWindowScene)?.keyWindow}
-            .first?
-            .rootViewController = HomeTabBarController()
+        NetworkLayer.shared.login(email: email, password: password) { token, error in
+            if let token = token{
+                LocalDataLayer.shared.save(token: token)
+                print("Valid token saved.")
+                
+                DispatchQueue.main.async {
+                    UIApplication
+                                .shared
+                                .connectedScenes
+                                .compactMap { ($0 as? UIWindowScene)?.keyWindow}
+                                .first?
+                                .rootViewController = HomeTabBarController()
+                }
+                
+
+                
+            }else{
+                print("Login Error:", error?.localizedDescription ?? "")
+            }
+        }
+        
+        
+        
     }
     
    
