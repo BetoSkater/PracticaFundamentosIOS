@@ -20,7 +20,7 @@ class TableViewController: BaseViewController {
     var dataToShow = DataList.AllHeroes
     
     var heroesList: [Heroe]?
-    //var transformationList : []
+    var transformationList: [Transformation]?
     
     
     
@@ -53,7 +53,10 @@ class TableViewController: BaseViewController {
                     print("Error fetching the heroes list: ", error?.localizedDescription  ?? "")
                 }
             }
-        //case .HeroTransformations
+        case .HeroTransformations:
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         default: print("Error: not such a type list avaiable")
         
         }
@@ -65,8 +68,8 @@ extension TableViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch dataToShow{
-            case .AllHeroes: return heroesList?.count ?? 0
-            //case .HeroTransformations: return 1
+            case .AllHeroes: return heroesList?.count ?? -1
+        case .HeroTransformations: return transformationList?.count ?? -1
             default: return 1
         }
         
@@ -88,9 +91,15 @@ extension TableViewController : UITableViewDelegate, UITableViewDataSource{
             }
                 
             case .HeroTransformations:
-                cell.pictureImageView.image = UIImage(imageLiteralResourceName: "fondo4")
-                cell.titleLabel.text = "Prueba Titulo"
-                cell.descriptionLabel.text = "Prueba descripcion"
+            if let transformList = transformationList{
+                let transform = transformList[indexPath.row]
+                
+                cell.pictureImageView.setImage(url: transform.photo)
+                cell.titleLabel.text = transform.name
+                cell.descriptionLabel.text = transform.description
+                
+            }
+                
             default:
             //TODO: test if there is a way to execute this default
                 cell.pictureImageView.image = UIImage(imageLiteralResourceName: "fondo4")
@@ -110,22 +119,18 @@ extension TableViewController : UITableViewDelegate, UITableViewDataSource{
         switch dataToShow{
             case .AllHeroes:
             if let heroeDetail = heroesList?[indexPath.row]{
-               /* if let heroeDetailUnwraped = heroeDetail{
-                    detailsView.heroe = heroeDetailUnwraped
-                    navigationController?.pushViewController(detailsView, animated: true)
-                }
-                */
                 detailsView.dataToShow = .hero
                 detailsView.heroe = heroeDetail
                 navigationController?.pushViewController(detailsView, animated: true)
-                
-                
+            }
+
+            case .HeroTransformations:
+            if let transformDetail = transformationList?[indexPath.row]{
+                detailsView.dataToShow = .transformation
+                detailsView.transformation = transformDetail
+                navigationController?.pushViewController(detailsView, animated: true)
             }
             
-            
-            
-            case .HeroTransformations:
-            navigationController?.pushViewController(detailsView, animated: true)
             default:
             navigationController?.pushViewController(detailsView, animated: true)
         }

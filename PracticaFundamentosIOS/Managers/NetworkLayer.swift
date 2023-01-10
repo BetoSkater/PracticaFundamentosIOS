@@ -32,6 +32,7 @@ enum MiscValues:String{
     case name = "name"
     case emptyValue = ""
     case bearer = "Bearer "
+    case id = "id"
 }
 
 final class NetworkLayer{
@@ -135,4 +136,58 @@ final class NetworkLayer{
         }
         task.resume()
     }
+    
+    //MARK: - TRANSFORMATION CALLS -
+    
+    func retrieveTransformations(token: String?, heroId: String?, completion: @escaping ([Transformation]?, Error?) -> ()){
+        //Url generation:
+        guard let url = URL(string: EndPoint.baseURL.rawValue + EndPoint.transformationsList.rawValue) else{
+            completion(nil, NetworkError.malformedURL)
+            return
+        }
+        
+        //Query to retrieve all transformations from a hero.
+        
+        var urlComponents = URLComponents()
+        urlComponents.queryItems = [URLQueryItem(name: MiscValues.id.rawValue, value: heroId ?? MiscValues.emptyValue.rawValue )]
+        
+        //Access Method
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = ApiMethod.post.rawValue
+        urlRequest.setValue(MiscValues.bearer.rawValue + (token ?? MiscValues.emptyValue.rawValue), forHTTPHeaderField: MiscValues.authorization.rawValue)
+        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
+        
+        //Task:
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard error == nil else{
+                completion(nil, error)
+                return
+            }
+            
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+                let statusCode = (response as? HTTPURLResponse)?.statusCode
+                completion(nil, NetworkError.statusCode(code: statusCode))
+                print("Error loading the url:", (response as? HTTPURLResponse)?.statusCode ?? -1)
+                return
+            }
+            
+            guard let data = data else{
+                completion(nil, NetworkError.noData)
+                return
+            }
+            
+            guard let transformations = try? JSONDecoder().decode([Transformation].self, from: data) else{
+                completion(nil, NetworkError.decodingFailed)
+                return
+            }
+            
+            completion(transformations, nil)
+        }
+        task.resume()
+    }
+    
+    
+    //MARK: - FAVOURITE CALLS -
+    //TODO: do if there is enough spare time.
 }

@@ -24,10 +24,16 @@ class DetailsViewController: UIViewController {
     //TODO: Add the transformation item
     var dataToShow: DataList?
     var heroe : Heroe?
+    var transformation: Transformation?
+    var heroTransformationsList:[Transformation]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let token = LocalDataLayer.shared.getToken()
+        transformationButton.isHidden = true
         if let detailType = dataToShow{
+            
             switch detailType{
             case .hero:
                 //TODO: Should I unwrap the optional with an if let?
@@ -37,10 +43,15 @@ class DetailsViewController: UIViewController {
                 detailsDescLabel.text = heroe?.description ?? "...***"
                 
                 //TODO: modify button just in case.
+                loadHeroTransformations(token: token , heroId: heroe?.id ?? MiscValues.emptyValue.rawValue)
                 
                 
+            case .transformation: detailsImageView.setImage(url: transformation?.photo ?? "")
+                detailsNameLabel.text = transformation?.name ?? "...**"
+                detailsDescLabel.text = transformation?.description ?? "...***"
                 
-            case .transformation: break
+                transformationButton.isHidden = true
+                
             default: break
             }
         }
@@ -50,7 +61,45 @@ class DetailsViewController: UIViewController {
 
    
     @IBAction func transformationButtonTapped(_ sender: UIButton) {
-        let tranformationView = TableViewController()
-        navigationController?.pushViewController(tranformationView, animated: true)
+        let transformationView = TableViewController()
+        if let dataType = dataToShow{
+            switch dataType{
+            case .hero:
+                if let transformationList = heroTransformationsList{
+                    transformationView.dataToShow = .HeroTransformations
+                    transformationView.transformationList = transformationList
+                    navigationController?.pushViewController(transformationView, animated: true)
+                }
+            case .transformation: break
+            default: break
+            }
+        }
+        
+        
+    }
+    
+    func loadHeroTransformations(token: String?,heroId: String?)->(){
+        
+        NetworkLayer.shared.retrieveTransformations(token: token, heroId: heroId) { [weak self] transformations, error in
+            guard let self = self else {return}
+            
+            if let transformations = transformations{
+                self.heroTransformationsList = transformations
+                
+                if !transformations.isEmpty{
+                    DispatchQueue.main.async {
+                        self.transformationButton.isHidden = false
+                            print("---->>TRANSFORMATION COUNT = \(transformations.count)")
+                        }
+                }else{
+                    print("---->> \(self.heroe?.name ?? "char") doesn't have transformations")
+                }
+                    
+                
+            }else{
+                print("Error retrieven transformations: ",  error?.localizedDescription ?? MiscValues.emptyValue.rawValue)
+            }
+        }
+        
     }
 }
