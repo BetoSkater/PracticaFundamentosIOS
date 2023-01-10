@@ -29,6 +29,9 @@ enum ApiMethod:String{
 enum MiscValues:String{
     case authorization = "Authorization"
     case basic = "Basic"
+    case name = "name"
+    case emptyValue = ""
+    case bearer = "Bearer "
 }
 
 final class NetworkLayer{
@@ -87,5 +90,49 @@ final class NetworkLayer{
     }
     
     
+    //MARK: - Heroes Call -
     
+    func retrieveHeroes(token: String?, completion: @escaping([Heroe]?, Error?)->()){
+        //URL generation:
+        
+        guard let url = URL(string: EndPoint.baseURL.rawValue + EndPoint.heroesList.rawValue) else {
+            completion(nil, NetworkError.malformedURL)
+            return
+        }
+        //Query to retrieve all heroes. Check postman
+        
+        var urlComponents = URLComponents()
+        urlComponents.queryItems = [URLQueryItem(name: MiscValues.name.rawValue,
+                                                 value: MiscValues.emptyValue.rawValue)]
+         
+        //Acess Method:
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = ApiMethod.post.rawValue
+        urlRequest.setValue(MiscValues.bearer.rawValue + (token ?? MiscValues.emptyValue.rawValue), forHTTPHeaderField: MiscValues.authorization.rawValue)
+        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
+        
+        //Petition:
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard error == nil else{
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else{
+                completion(nil, NetworkError.noData)
+                return
+            }
+            
+            guard let heroes = try? JSONDecoder().decode([Heroe].self, from: data) else{
+                completion(nil, NetworkError.decodingFailed)
+                return
+                
+            }
+            
+            completion(heroes, nil)
+            
+        }
+        task.resume()
+    }
 }

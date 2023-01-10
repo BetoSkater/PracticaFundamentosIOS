@@ -13,6 +13,7 @@
 		D37B1DF5296326A00020BBFE /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D37B1DF3296326A00020BBFE /* TableViewCell.xib */; };
 		D37B1DF9296326EE0020BBFE /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37B1DF7296326EE0020BBFE /* DetailsViewController.swift */; };
 		D37B1DFA296326EE0020BBFE /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D37B1DF8296326EE0020BBFE /* DetailsViewController.xib */; };
+		D37DB9B2296C9105001AEEA8 /* Heroe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DB9B1296C9105001AEEA8 /* Heroe.swift */; };
 		D37DEE16296C53E50015FDF7 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DEE15296C53E50015FDF7 /* NetworkLayer.swift */; };
 		D380A0FA2965DB2500205547 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D380A0F82965DB2500205547 /* LaunchScreen.storyboard */; };
 		D380A0FB2965DB2500205547 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D380A0F82965DB2500205547 /* LaunchScreen.storyboard */; };
@@ -60,6 +61,7 @@
 		D37B1DF3296326A00020BBFE /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		D37B1DF7296326EE0020BBFE /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		D37B1DF8296326EE0020BBFE /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		D37DB9B1296C9105001AEEA8 /* Heroe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heroe.swift; sourceTree = "<group>"; };
 		D37DEE15296C53E50015FDF7 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		D380A0F92965DB2500205547 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PracticaFundamentosIOS/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		D380A1002966101D00205547 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				D38439A729659C9300529DAC /* SystemEnum.swift */,
 				D38439A92965A08700529DAC /* TextEnum.swift */,
+				D37DB9B1296C9105001AEEA8 /* Heroe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				D3BE5846296307D900837903 /* HomeTabBarController.swift in Sources */,
 				D3BE58082962EA9A00837903 /* AppDelegate.swift in Sources */,
 				D380A1072966105500205547 /* CollectionViewCell.swift in Sources */,
+				D37DB9B2296C9105001AEEA8 /* Heroe.swift in Sources */,
 				D3AF244D2966E73C0096F9A4 /* LocalDataLayer.swift in Sources */,
 				D3BE58422962F8F100837903 /* LoginViewController.swift in Sources */,
 				D3BE580A2962EA9A00837903 /* SceneDelegate.swift in Sources */,

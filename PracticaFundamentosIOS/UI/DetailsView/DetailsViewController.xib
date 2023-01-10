@@ -36,9 +36,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripcion" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oab-Oy-qcX">
-                    <rect key="frame" x="21.666666666666657" y="405.33333333333326" width="350" height="275"/>
+                    <rect key="frame" x="21.666666666666657" y="405.33333333333326" width="350" height="225"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="275" id="cjx-h0-aX4"/>
+                        <constraint firstAttribute="height" constant="225" id="cjx-h0-aX4"/>
                         <constraint firstAttribute="width" constant="350" id="jzJ-uY-wxd"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -46,10 +46,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLb-Vw-HGW">
-                    <rect key="frame" x="46.666666666666657" y="693" width="300" height="75"/>
+                    <rect key="frame" x="46.666666666666657" y="733" width="300" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="5bi-wJ-f3b"/>
-                        <constraint firstAttribute="height" constant="75" id="ZWy-18-MId"/>
+                        <constraint firstAttribute="height" constant="50" id="ZWy-18-MId"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Ver transformaciones"/>
@@ -65,7 +65,7 @@
                 <constraint firstItem="oab-Oy-qcX" firstAttribute="top" secondItem="xAq-BJ-bI7" secondAttribute="bottom" constant="15" id="FMI-KP-0bG"/>
                 <constraint firstItem="GLb-Vw-HGW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JCe-a8-3TI"/>
                 <constraint firstItem="cNB-bi-hVI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="LAf-zI-b8T"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GLb-Vw-HGW" secondAttribute="bottom" constant="50" id="iFc-AE-u7g"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GLb-Vw-HGW" secondAttribute="bottom" constant="35" id="iFc-AE-u7g"/>
                 <constraint firstItem="oab-Oy-qcX" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ikb-lC-w8W"/>
                 <constraint firstItem="xAq-BJ-bI7" firstAttribute="top" secondItem="cNB-bi-hVI" secondAttribute="bottom" constant="25" id="lU3-E0-m5g"/>
                 <constraint firstItem="cNB-bi-hVI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="pAL-Dw-ndx"/>
