@@ -20,6 +20,7 @@ enum EndPoint:String{
     case login = "/api/auth/login"
     case heroesList = "/api/heros/all"
     case transformationsList = "/api/heros/tranformations"
+    case setFav = "/api/data/herolike"
 }
 enum ApiMethod:String{
     case get = "GET"
@@ -33,6 +34,7 @@ enum MiscValues:String{
     case emptyValue = ""
     case bearer = "Bearer "
     case id = "id"
+    case hero = "hero"
 }
 
 final class NetworkLayer{
@@ -190,4 +192,59 @@ final class NetworkLayer{
     
     //MARK: - FAVOURITE CALLS -
     //TODO: do if there is enough spare time.
+    
+    func setFavourite(token: String?, heroId: String?, completion: @escaping (HTTPURLResponse?, Error?)->() ){
+        //URL generation:
+        
+        guard let url = URL(string: EndPoint.baseURL.rawValue + EndPoint.setFav.rawValue) else {
+            completion(nil, NetworkError.malformedURL)
+            return
+        }
+        
+        //Query to a Hero
+        var urlComponents = URLComponents()
+        urlComponents.queryItems = [URLQueryItem(name: MiscValues.hero.rawValue, value: heroId ?? MiscValues.emptyValue.rawValue)]
+        
+        //AccessPetition
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = ApiMethod.post.rawValue
+        urlRequest.setValue(MiscValues.bearer.rawValue + (token ?? MiscValues.emptyValue.rawValue), forHTTPHeaderField: MiscValues.authorization.rawValue)
+        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
+        
+        
+        //Task:
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
+            //When doing the like call in postmant, the good response is the 201
+            guard (response as? HTTPURLResponse)?.statusCode == 201 else{
+                let statusCode = (response as? HTTPURLResponse)?.statusCode
+                completion(nil, NetworkError.statusCode(code: statusCode))
+                print("\((response as? HTTPURLResponse)?.statusCode)  In network layer")
+                return
+            }
+            guard let data = data else{
+                completion(nil, NetworkError.noData)
+                //doing expression data while debbuging yields a "$R5 = 0 bytes" note: $R5 has this name because is the fifth expression that I have evaluated.
+                return
+            }
+            /*
+            //Testing what does data contains:
+            
+            guard let result = try? JSONDecoder().decode(Int.self, from: data) else{
+                completion(nil, NetworkError.decodingFailed)
+                print(data)
+                return
+            }
+             */
+            //TODO: debug this, I think that data might be empty or just have a 1 as stated by postman
+            completion((response as? HTTPURLResponse),nil)
+        }
+        task.resume()
+    }
+    
+    
 }

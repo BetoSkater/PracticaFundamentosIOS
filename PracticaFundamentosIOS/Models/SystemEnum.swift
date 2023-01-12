@@ -13,6 +13,8 @@ enum SystemEnum:String{
     case sevenDragonBalls = "circle.hexagongrid.circle.fill"
     case heroPunch = "figure.martial.arts"
     case fusion = "figure.cooldown"
+    case star = "star"
+    case starFill = "star.fill"
     
     //TableView
     case characterCell = "characterTableCell"

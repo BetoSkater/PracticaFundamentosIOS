@@ -18,6 +18,8 @@ class CollectionViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        navigationItem.title = TextEnum.favouriteHeroes.rawValue
+        
         let xib = UINib(nibName: SystemEnum.collectionViewCell.rawValue, bundle: nil)
         collectionView.register(xib, forCellWithReuseIdentifier: SystemEnum.characterCollectionCell.rawValue)
         

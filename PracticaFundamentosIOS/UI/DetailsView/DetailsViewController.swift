@@ -14,6 +14,9 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var detailsDescLabel: UILabel!
     @IBOutlet weak var transformationButton: UIButton!
     
+    @IBOutlet weak var favButton: UIButton!
+    
+    
     //TODO: Extract enum as it is the same as the one in TableView
     //Ok is not the same, but is similar, it all can go in the same enum.
     enum DataList{
@@ -21,16 +24,16 @@ class DetailsViewController: UIViewController {
         case transformation
     }
     
-    //TODO: Add the transformation item
     var dataToShow: DataList?
     var heroe : Heroe?
     var transformation: Transformation?
     var heroTransformationsList:[Transformation]?
+    let token = LocalDataLayer.shared.getToken() //Moved from viewDidLoad so the button can access it.
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let token = LocalDataLayer.shared.getToken()
+        
         transformationButton.isHidden = true
         if let detailType = dataToShow{
             
@@ -41,6 +44,9 @@ class DetailsViewController: UIViewController {
                 detailsImageView.setImage(url: heroe?.photo ?? "")
                 detailsNameLabel.text = heroe?.name ?? "...**"
                 detailsDescLabel.text = heroe?.description ?? "...***"
+                if heroe?.favorite ?? false{
+                    favButton.setImage(UIImage(systemName: SystemEnum.starFill.rawValue), for: .normal)
+                }
                 
                 //TODO: modify button just in case.
                 loadHeroTransformations(token: token , heroId: heroe?.id ?? MiscValues.emptyValue.rawValue)
@@ -51,7 +57,7 @@ class DetailsViewController: UIViewController {
                 detailsDescLabel.text = transformation?.description ?? "...***"
                 
                 transformationButton.isHidden = true
-                
+                favButton.isHidden = true
             default: break
             }
         }
@@ -74,9 +80,19 @@ class DetailsViewController: UIViewController {
             default: break
             }
         }
+    }
+    
+    
+    @IBAction func favButtonTapped(_ sender: UIButton) {
+        //TODO: add favourite functionality here in the button
+        //Note: as the button is hidden in the viewDidLoad in case de dataToShow is a transformation, I think that I do not hace to do it here too.
         
+        if let heroe = heroe{
+            favUnfav(token: token, heroId: heroe.id, liked: heroe.favorite)
+        }
         
     }
+    
     
     func loadHeroTransformations(token: String?,heroId: String?)->(){
         
@@ -98,6 +114,29 @@ class DetailsViewController: UIViewController {
                 
             }else{
                 print("Error retrieven transformations: ",  error?.localizedDescription ?? MiscValues.emptyValue.rawValue)
+            }
+        }
+        
+    }
+    
+    func favUnfav(token: String, heroId: String, liked: Bool)->(){
+        
+        NetworkLayer.shared.setFavourite(token: token, heroId: heroId) { response, error in
+            if let response = response{
+                
+                print("\(response.statusCode)   in detailsView")
+                
+                DispatchQueue.main.async {
+                   print("Inside DispatchQueue")
+                    if liked{
+                        self.favButton.setImage(UIImage(systemName: SystemEnum.star.rawValue), for: .normal)
+                            print("unliked")
+                    }else{
+                        self.favButton.setImage(UIImage(systemName: SystemEnum.starFill.rawValue), for: .normal)
+                                           print("liked")
+                    }
+                   
+                }
             }
         }
         
