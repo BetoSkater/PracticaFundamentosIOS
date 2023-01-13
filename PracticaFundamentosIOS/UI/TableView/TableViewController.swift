@@ -61,7 +61,7 @@ class TableViewController: BaseViewController {
         
         }
     }
-
+    
 }
 //MARK: - UITableViewDelegate and UITableViewDataSource extension.-
 extension TableViewController : UITableViewDelegate, UITableViewDataSource{
@@ -121,6 +121,7 @@ extension TableViewController : UITableViewDelegate, UITableViewDataSource{
             if let heroeDetail = heroesList?[indexPath.row]{
                 detailsView.dataToShow = .hero
                 detailsView.heroe = heroeDetail
+                detailsView.delegate = self
                 navigationController?.pushViewController(detailsView, animated: true)
             }
 
@@ -171,3 +172,28 @@ extension UIImageView{
     }
 }
 
+
+ 
+
+extension TableViewController: HeroUpdaterDelegate{
+    func heroWasModified(updated heroe: Heroe) {
+       print("print at tableviewController func hero was modified")
+        if var theHeroList = self.heroesList{
+            let heroeIndex = theHeroList.firstIndex{ $0.id == heroe.id} ?? -1
+            theHeroList[heroeIndex].favorite = heroe.favorite
+            self.heroesList = theHeroList
+            DispatchQueue.main.async {
+                print("dispatch queue inside the overrided delegate func at tableviewcontroller")
+                self.tableView.reloadData()
+            }
+            self.tableView.reloadData()
+            //TODO: neither of the reload seems to be working
+        }
+        
+        
+        
+      
+    }
+    
+    
+}

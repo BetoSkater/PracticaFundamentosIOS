@@ -7,13 +7,12 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: BaseViewController {
     //TODO: Add an scrollview at least in the description. It would be better to add it to the whole view.
     @IBOutlet weak var detailsImageView: UIImageView!
     @IBOutlet weak var detailsNameLabel: UILabel!
     @IBOutlet weak var detailsDescLabel: UILabel!
     @IBOutlet weak var transformationButton: UIButton!
-    
     @IBOutlet weak var favButton: UIButton!
     
     
@@ -29,6 +28,8 @@ class DetailsViewController: UIViewController {
     var transformation: Transformation?
     var heroTransformationsList:[Transformation]?
     let token = LocalDataLayer.shared.getToken() //Moved from viewDidLoad so the button can access it.
+    
+    var delegate: HeroUpdaterDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +89,14 @@ class DetailsViewController: UIViewController {
         //Note: as the button is hidden in the viewDidLoad in case de dataToShow is a transformation, I think that I do not hace to do it here too.
         
         if let heroe = heroe{
-            favUnfav(token: token, heroId: heroe.id, liked: heroe.favorite)
+            favUnfav(token: token, and: heroe)
+          /*
+            if delegate != nil{
+                let modifiedHeroe = favUnfav(token: token, and: heroe)
+                delegate?.heroWasModified(updated: modifiedHeroe)
+            }
+            */
+            
         }
         
     }
@@ -119,26 +127,36 @@ class DetailsViewController: UIViewController {
         
     }
     
-    func favUnfav(token: String, heroId: String, liked: Bool)->(){
-        
-        NetworkLayer.shared.setFavourite(token: token, heroId: heroId) { response, error in
+   // func favUnfav(token: String, heroId: String, liked: Bool)->(){
+    func favUnfav(token: String, and heroe: Heroe)->(){
+        var updatedHeroe = heroe
+        NetworkLayer.shared.setFavourite(token: token, heroId: heroe.id) { response, error in
             if let response = response{
                 
                 print("\(response.statusCode)   in detailsView")
                 
                 DispatchQueue.main.async {
                    print("Inside DispatchQueue")
-                    if liked{
+                    if heroe.favorite{
                         self.favButton.setImage(UIImage(systemName: SystemEnum.star.rawValue), for: .normal)
+                            updatedHeroe.favorite = !heroe.favorite
                             print("unliked")
                     }else{
                         self.favButton.setImage(UIImage(systemName: SystemEnum.starFill.rawValue), for: .normal)
+                            updatedHeroe.favorite = !heroe.favorite
+                            
                                            print("liked")
+                    }//else
+                    if self.delegate != nil{
+                        
+                        self.delegate?.heroWasModified(updated: updatedHeroe)
                     }
-                   
-                }
+                }//DispatchQueue
             }
-        }
-        
-    }
+        }//Network
+       // return updatedHeroe
+    }//func favunfav
+}
+protocol HeroUpdaterDelegate{
+    func heroWasModified(updated heroe: Heroe)
 }
