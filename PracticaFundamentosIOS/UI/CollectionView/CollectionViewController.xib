@@ -20,8 +20,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="C1d-0q-s4y">
-                    <rect key="frame" x="0.0" y="59" width="375" height="608"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="5" y="59" width="365" height="608"/>
+                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bnn-c5-DkH">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -34,17 +34,14 @@
             <color key="backgroundColor" systemColor="systemOrangeColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="C1d-0q-s4y" secondAttribute="bottom" id="4eh-TV-b79"/>
-                <constraint firstItem="C1d-0q-s4y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="I1a-qZ-hIk"/>
+                <constraint firstItem="C1d-0q-s4y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="I1a-qZ-hIk"/>
                 <constraint firstItem="C1d-0q-s4y" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QTA-7J-XPm"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C1d-0q-s4y" secondAttribute="trailing" id="pZc-2a-iB7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C1d-0q-s4y" secondAttribute="trailing" constant="5" id="pZc-2a-iB7"/>
             </constraints>
             <point key="canvasLocation" x="46" y="21"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

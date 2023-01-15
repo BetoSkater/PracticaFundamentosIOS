@@ -20,7 +20,7 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        loginButton.layer.cornerRadius = 10
     }
 
 

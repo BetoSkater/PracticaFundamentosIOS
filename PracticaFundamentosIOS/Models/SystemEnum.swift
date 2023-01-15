@@ -16,7 +16,8 @@ enum SystemEnum:String{
     case star = "star"
     case starFill = "star.fill"
     case settingsGear = "gearshape.fill"
-    
+    //Custom Colors
+    case gokuBlue = "GokuBlue"
     //TableView
     case characterCell = "characterTableCell"
     case tableViewCell = "TableViewCell"

@@ -21,7 +21,7 @@ class HomeTabBarController: UITabBarController {
         let firstNavigationController = UINavigationController(rootViewController: TableViewController())
         let tableImage = UIImage(systemName: SystemEnum.listIcon.rawValue)
         firstNavigationController.tabBarItem = UITabBarItem(title: TextEnum.characterTable.rawValue, image: tableImage, tag: 0)
-        
+        //firstNavigationController.navigationBar.tintColor = UIColor(named: SystemEnum.gokuBlue.rawValue)
         
         let secondNavigationController = UINavigationController(rootViewController: CollectionViewController())
         let collectionImage = UIImage(systemName: SystemEnum.collectionIcon.rawValue)
@@ -37,6 +37,8 @@ class HomeTabBarController: UITabBarController {
     
     private func setUpLayout(){
         tabBar.barTintColor = .systemOrange
+        tabBar.tintColor = UIColor(named: SystemEnum.gokuBlue.rawValue)
+         
     }
 
     

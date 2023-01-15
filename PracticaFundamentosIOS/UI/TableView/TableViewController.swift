@@ -16,13 +16,10 @@ class TableViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
     //Variable that get the value that indicates which list to load.
-        
     var dataToShow = DataList.AllHeroes
     
     var heroesList: [Heroe]?
     var transformationList: [Transformation]?
-    
-    
     
     //TODO: complete the transformation list stage
     override func viewDidLoad() {
@@ -30,6 +27,18 @@ class TableViewController: BaseViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        //Adding marging to the tableView
+        //tableView.contentInset = UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 1)
+        
+        switch dataToShow{
+        case .AllHeroes:
+            navigationItem.title = TextEnum.characterTable.rawValue
+        case .HeroTransformations:
+            navigationItem.title = TextEnum.transformations.rawValue
+        }
+        
+        
+        //navigationItem.color = UIColor(named: SystemEnum.gokuBlue.rawValue)
         
         let xib = UINib(nibName: SystemEnum.tableViewCell.rawValue, bundle: nil)
         tableView.register(xib, forCellReuseIdentifier: SystemEnum.characterCell.rawValue)
@@ -77,7 +86,8 @@ extension TableViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SystemEnum.characterCell.rawValue, for: indexPath) as! TableViewCell
-        
+        cell.selectionStyle = .none
+       
         switch dataToShow{
             case .AllHeroes:
             
@@ -111,7 +121,7 @@ extension TableViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 104
+        return 126
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsView = DetailsViewController()

@@ -9,6 +9,7 @@ import Foundation
 
 enum TextEnum:String{
     case characterTable = "Characters List"
+    case transformations = "Transformations"
     case charactersCollection = "Favourite Characters"
     case favouriteHeroes = "My Favourite Heroes"
     case settings = "Settings"

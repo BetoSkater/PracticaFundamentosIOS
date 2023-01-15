@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,28 +31,32 @@
                         <constraint firstAttribute="width" constant="380" id="jD4-2U-xZB"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAq-BJ-bI7">
-                    <rect key="frame" x="25" y="354" width="249" height="26"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAq-BJ-bI7">
+                    <rect key="frame" x="24.999999999999993" y="349" width="82.333333333333314" height="35"/>
+                    <color key="tintColor" name="GokuBlue"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" name="GokuBlue"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripcion" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oab-Oy-qcX">
-                    <rect key="frame" x="21.666666666666657" y="404" width="350" height="225"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripcion" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oab-Oy-qcX">
+                    <rect key="frame" x="21.666666666666657" y="394" width="350" height="225"/>
+                    <color key="tintColor" name="GokuBlue"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="225" id="cjx-h0-aX4"/>
                         <constraint firstAttribute="width" constant="350" id="jzJ-uY-wxd"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" name="GokuBlue"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLb-Vw-HGW">
                     <rect key="frame" x="46.666666666666657" y="733" width="300" height="50"/>
+                    <color key="backgroundColor" name="GokuBlue"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="5bi-wJ-f3b"/>
                         <constraint firstAttribute="height" constant="50" id="ZWy-18-MId"/>
                     </constraints>
+                    <color key="tintColor" systemColor="systemOrangeColor"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Ver transformaciones"/>
                     <connections>
@@ -59,7 +64,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epY-Nt-HUN">
-                    <rect key="frame" x="326" y="354" width="52" height="35"/>
+                    <rect key="frame" x="326" y="349" width="52" height="35"/>
                     <color key="tintColor" systemColor="systemYellowColor"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
@@ -69,18 +74,18 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" systemColor="systemOrangeColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cNB-bi-hVI" secondAttribute="trailing" constant="8" id="8bB-QH-PNb"/>
-                <constraint firstItem="oab-Oy-qcX" firstAttribute="top" secondItem="xAq-BJ-bI7" secondAttribute="bottom" constant="15" id="FMI-KP-0bG"/>
+                <constraint firstItem="oab-Oy-qcX" firstAttribute="top" secondItem="xAq-BJ-bI7" secondAttribute="bottom" constant="10" id="FMI-KP-0bG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="epY-Nt-HUN" secondAttribute="trailing" constant="15" id="Ihe-07-sd0"/>
                 <constraint firstItem="GLb-Vw-HGW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JCe-a8-3TI"/>
                 <constraint firstItem="cNB-bi-hVI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="LAf-zI-b8T"/>
-                <constraint firstItem="oab-Oy-qcX" firstAttribute="top" secondItem="epY-Nt-HUN" secondAttribute="bottom" constant="15" id="XSS-hz-O8o"/>
-                <constraint firstItem="epY-Nt-HUN" firstAttribute="top" secondItem="cNB-bi-hVI" secondAttribute="bottom" constant="15" id="fev-OK-Jxw"/>
+                <constraint firstItem="oab-Oy-qcX" firstAttribute="top" secondItem="epY-Nt-HUN" secondAttribute="bottom" constant="10" id="XSS-hz-O8o"/>
+                <constraint firstItem="epY-Nt-HUN" firstAttribute="top" secondItem="cNB-bi-hVI" secondAttribute="bottom" constant="10" id="fev-OK-Jxw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GLb-Vw-HGW" secondAttribute="bottom" constant="35" id="iFc-AE-u7g"/>
                 <constraint firstItem="oab-Oy-qcX" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ikb-lC-w8W"/>
-                <constraint firstItem="xAq-BJ-bI7" firstAttribute="top" secondItem="cNB-bi-hVI" secondAttribute="bottom" constant="15" id="lU3-E0-m5g"/>
+                <constraint firstItem="xAq-BJ-bI7" firstAttribute="top" secondItem="cNB-bi-hVI" secondAttribute="bottom" constant="10" id="lU3-E0-m5g"/>
                 <constraint firstItem="cNB-bi-hVI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="pAL-Dw-ndx"/>
                 <constraint firstItem="xAq-BJ-bI7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="xSX-3p-32t"/>
             </constraints>
@@ -89,8 +94,11 @@
     </objects>
     <resources>
         <image name="star" catalog="system" width="128" height="116"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="GokuBlue">
+            <color red="0.12310987710952759" green="0.1528477817773819" blue="0.72030407190322876" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

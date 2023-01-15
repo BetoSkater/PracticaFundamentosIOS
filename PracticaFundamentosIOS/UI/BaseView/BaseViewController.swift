@@ -18,10 +18,7 @@ class BaseViewController: UIViewController {
     func logOut(){
         //Remove the token from UserDefaults
         LocalDataLayer.shared.deleteToken()
-        /*
-        let loginView = LoginViewController()
-        navigationController?.pushViewController(loginView, animated: true)
-         */
+        
         UIApplication
                     .shared
                     .connectedScenes

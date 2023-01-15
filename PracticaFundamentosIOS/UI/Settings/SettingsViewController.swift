@@ -15,7 +15,7 @@ class SettingsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        logOutButton.layer.cornerRadius = 5
+        logOutButton.layer.cornerRadius = 10
         
     }
 

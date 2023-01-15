@@ -36,6 +36,7 @@ class DetailsViewController: BaseViewController {
         
         
         transformationButton.isHidden = true
+        transformationButton.layer.cornerRadius = 10
         if let detailType = dataToShow{
             
             switch detailType{

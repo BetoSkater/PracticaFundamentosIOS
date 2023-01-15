@@ -22,20 +22,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zJ4-1F-dGG">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="191"/>
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="206"/>
                                 <color key="tintColor" name="AccentColor"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drC-Kk-1Gx">
                                 <rect key="frame" x="97.666666666666671" y="216" width="55.000000000000014" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="tintColor"/>
+                        <color key="backgroundColor" name="GokuBlue"/>
                         <color key="tintColor" systemColor="systemOrangeColor"/>
                         <constraints>
-                            <constraint firstItem="drC-Kk-1Gx" firstAttribute="top" secondItem="zJ4-1F-dGG" secondAttribute="bottom" constant="25" id="PWW-9D-yF2"/>
+                            <constraint firstItem="drC-Kk-1Gx" firstAttribute="top" secondItem="zJ4-1F-dGG" secondAttribute="bottom" constant="10" id="PWW-9D-yF2"/>
                             <constraint firstItem="zJ4-1F-dGG" firstAttribute="leading" secondItem="bo9-WJ-xcM" secondAttribute="leading" id="dKX-iM-l8I"/>
                             <constraint firstAttribute="trailing" secondItem="zJ4-1F-dGG" secondAttribute="trailing" id="eW1-cj-Md2"/>
                             <constraint firstItem="zJ4-1F-dGG" firstAttribute="top" secondItem="bo9-WJ-xcM" secondAttribute="top" id="jP1-aW-KjF"/>
@@ -64,11 +64,11 @@
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="GokuBlue">
+            <color red="0.12300000339746475" green="0.15299999713897705" blue="0.72000002861022949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
