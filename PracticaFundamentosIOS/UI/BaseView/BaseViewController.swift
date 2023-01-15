@@ -12,18 +12,23 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func logOut(){
+        //Remove the token from UserDefaults
+        LocalDataLayer.shared.deleteToken()
+        /*
+        let loginView = LoginViewController()
+        navigationController?.pushViewController(loginView, animated: true)
+         */
+        UIApplication
+                    .shared
+                    .connectedScenes
+                    .compactMap { ($0 as? UIWindowScene)?.keyWindow}
+                    .first?
+                    .rootViewController = LoginViewController()
     }
-    */
+    
 
 }

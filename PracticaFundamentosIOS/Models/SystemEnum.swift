@@ -15,6 +15,7 @@ enum SystemEnum:String{
     case fusion = "figure.cooldown"
     case star = "star"
     case starFill = "star.fill"
+    case settingsGear = "gearshape.fill"
     
     //TableView
     case characterCell = "characterTableCell"

@@ -14,6 +14,8 @@
 		D37B1DF9296326EE0020BBFE /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37B1DF7296326EE0020BBFE /* DetailsViewController.swift */; };
 		D37B1DFA296326EE0020BBFE /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D37B1DF8296326EE0020BBFE /* DetailsViewController.xib */; };
 		D37B8308296D87FB0047DC6D /* Transformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37B8307296D87FB0047DC6D /* Transformation.swift */; };
+		D37C221429744104006C17A8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C221229744104006C17A8 /* SettingsViewController.swift */; };
+		D37C221529744104006C17A8 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D37C221329744104006C17A8 /* SettingsViewController.xib */; };
 		D37DB9B2296C9105001AEEA8 /* Heroe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DB9B1296C9105001AEEA8 /* Heroe.swift */; };
 		D37DEE16296C53E50015FDF7 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DEE15296C53E50015FDF7 /* NetworkLayer.swift */; };
 		D37F0DA229741EEB0083537B /* HeroeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F0DA129741EEB0083537B /* HeroeTest.swift */; };
@@ -68,6 +70,8 @@
 		D37B1DF7296326EE0020BBFE /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		D37B1DF8296326EE0020BBFE /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		D37B8307296D87FB0047DC6D /* Transformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformation.swift; sourceTree = "<group>"; };
+		D37C221229744104006C17A8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D37C221329744104006C17A8 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		D37DB9B1296C9105001AEEA8 /* Heroe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heroe.swift; sourceTree = "<group>"; };
 		D37DEE15296C53E50015FDF7 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		D37F0DA129741EEB0083537B /* HeroeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroeTest.swift; sourceTree = "<group>"; };
@@ -147,6 +151,15 @@
 				D37B1DF8296326EE0020BBFE /* DetailsViewController.xib */,
 			);
 			path = DetailsView;
+			sourceTree = "<group>";
+		};
+		D37C2211297440CA006C17A8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D37C221229744104006C17A8 /* SettingsViewController.swift */,
+				D37C221329744104006C17A8 /* SettingsViewController.xib */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		D380A0FD29660FB300205547 /* CollectionView */ = {
@@ -267,6 +280,7 @@
 				D37B1DEC2963262A0020BBFE /* TableView */,
 				D37B1DF6296326C20020BBFE /* DetailsView */,
 				D380A0FD29660FB300205547 /* CollectionView */,
+				D37C2211297440CA006C17A8 /* Settings */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -401,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D380A0FA2965DB2500205547 /* LaunchScreen.storyboard in Resources */,
+				D37C221529744104006C17A8 /* SettingsViewController.xib in Resources */,
 				D37B1DFA296326EE0020BBFE /* DetailsViewController.xib in Resources */,
 				D3BE58432962F8F100837903 /* LoginViewController.xib in Resources */,
 				D380A1082966105500205547 /* CollectionViewCell.xib in Resources */,
@@ -451,6 +466,7 @@
 				D3AF244D2966E73C0096F9A4 /* LocalDataLayer.swift in Sources */,
 				D3BE58422962F8F100837903 /* LoginViewController.swift in Sources */,
 				D3BE580A2962EA9A00837903 /* SceneDelegate.swift in Sources */,
+				D37C221429744104006C17A8 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

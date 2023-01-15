@@ -26,6 +26,10 @@ final class LocalDataLayer{
         return UserDefaults.standard.string(forKey: Self.token) ?? ""
     }
     
+    func deleteToken() -> (){
+        UserDefaults.standard.removeObject(forKey: Self.token) 
+    }
+    
     //MARK: - User login related data. -
     
     func isUserLogged() -> Bool {

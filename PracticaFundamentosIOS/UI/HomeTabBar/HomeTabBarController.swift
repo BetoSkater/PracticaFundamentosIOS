@@ -27,9 +27,12 @@ class HomeTabBarController: UITabBarController {
         let collectionImage = UIImage(systemName: SystemEnum.collectionIcon.rawValue)
         secondNavigationController.tabBarItem = UITabBarItem(title: TextEnum.charactersCollection.rawValue, image: collectionImage, tag: 1)
         
+        let thirdNavigationController = UINavigationController(rootViewController: SettingsViewController())
+        let settingsImage = UIImage(systemName: SystemEnum.settingsGear.rawValue)
+        thirdNavigationController.tabBarItem = UITabBarItem(title: TextEnum.settings.rawValue, image: settingsImage, tag: 2)
         
-        
-        viewControllers = [firstNavigationController,secondNavigationController]
+        viewControllers = [firstNavigationController,secondNavigationController,
+        thirdNavigationController]
     }
     
     private func setUpLayout(){

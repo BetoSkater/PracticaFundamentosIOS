@@ -52,17 +52,14 @@ class DetailsViewController: BaseViewController {
                 //TODO: modify button just in case.
                 loadHeroTransformations(token: token , heroId: heroe?.id ?? MiscValues.emptyValue.rawValue)
                 
-                
             case .transformation: detailsImageView.setImage(url: transformation?.photo ?? "")
                 detailsNameLabel.text = transformation?.name ?? "...**"
                 detailsDescLabel.text = transformation?.description ?? "...***"
-                
                 transformationButton.isHidden = true
                 favButton.isHidden = true
             default: break
             }
         }
-        
     }
 
 
@@ -86,19 +83,11 @@ class DetailsViewController: BaseViewController {
     
     @IBAction func favButtonTapped(_ sender: UIButton) {
         //TODO: add favourite functionality here in the button
-        //Note: as the button is hidden in the viewDidLoad in case de dataToShow is a transformation, I think that I do not hace to do it here too.
+        //Note: as the button is hidden in the viewDidLoad in case de dataToShow is a transformation, I think that I do not have to do it here too.
         
         if let heroe = heroe{
             favUnfav(token: token, and: heroe)
-          /*
-            if delegate != nil{
-                let modifiedHeroe = favUnfav(token: token, and: heroe)
-                delegate?.heroWasModified(updated: modifiedHeroe)
-            }
-            */
-            
         }
-        
     }
     
     

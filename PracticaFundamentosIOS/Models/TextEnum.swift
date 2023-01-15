@@ -9,8 +9,11 @@ import Foundation
 
 enum TextEnum:String{
     case characterTable = "Characters List"
-    case charactersCollection = "Characters Collection"
+    case charactersCollection = "Favourite Characters"
     case favouriteHeroes = "My Favourite Heroes"
+    case settings = "Settings"
+    
+    //Test
     case testName = "Cell"
     case testDesc = "Cell can absorb enemies"
     case testId = "kjdhasjdhai2e43434"
