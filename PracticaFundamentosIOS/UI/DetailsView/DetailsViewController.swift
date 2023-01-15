@@ -150,6 +150,7 @@ class DetailsViewController: BaseViewController {
                     if self.delegate != nil{
                         
                         self.delegate?.heroWasModified(updated: updatedHeroe)
+                        
                     }
                 }//DispatchQueue
             }

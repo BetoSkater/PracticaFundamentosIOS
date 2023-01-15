@@ -187,13 +187,7 @@ extension TableViewController: HeroUpdaterDelegate{
                 self.tableView.reloadData()
             }
             self.tableView.reloadData()
-            //TODO: neither of the reload seems to be working
+            //TODO: find out which of the reloadData is the one working
         }
-        
-        
-        
-      
     }
-    
-    
 }
