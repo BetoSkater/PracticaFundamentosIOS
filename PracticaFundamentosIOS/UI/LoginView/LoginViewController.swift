@@ -8,22 +8,17 @@
 import UIKit
 
 class LoginViewController: BaseViewController {
-
     
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var loginButton: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         loginButton.layer.cornerRadius = 10
     }
-
-
+    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         
         guard let email = emailTextField.text, !email.isEmpty else{
@@ -42,23 +37,15 @@ class LoginViewController: BaseViewController {
                 
                 DispatchQueue.main.async {
                     UIApplication
-                                .shared
-                                .connectedScenes
-                                .compactMap { ($0 as? UIWindowScene)?.keyWindow}
-                                .first?
-                                .rootViewController = HomeTabBarController()
+                        .shared
+                        .connectedScenes
+                        .compactMap { ($0 as? UIWindowScene)?.keyWindow}
+                        .first?
+                        .rootViewController = HomeTabBarController()
                 }
-                
-
-                
             }else{
                 print("Login Error:", error?.localizedDescription ?? "")
             }
         }
-        
-        
-        
     }
-    
-   
 }

@@ -8,20 +8,18 @@
 import UIKit
 
 class HomeTabBarController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpLayout()
         setUpTabs()
-        
     }
     
     private func setUpTabs(){
         let firstNavigationController = UINavigationController(rootViewController: TableViewController())
         let tableImage = UIImage(systemName: SystemEnum.listIcon.rawValue)
         firstNavigationController.tabBarItem = UITabBarItem(title: TextEnum.characterTable.rawValue, image: tableImage, tag: 0)
-        //firstNavigationController.navigationBar.tintColor = UIColor(named: SystemEnum.gokuBlue.rawValue)
         
         let secondNavigationController = UINavigationController(rootViewController: CollectionViewController())
         let collectionImage = UIImage(systemName: SystemEnum.collectionIcon.rawValue)
@@ -32,14 +30,11 @@ class HomeTabBarController: UITabBarController {
         thirdNavigationController.tabBarItem = UITabBarItem(title: TextEnum.settings.rawValue, image: settingsImage, tag: 2)
         
         viewControllers = [firstNavigationController,secondNavigationController,
-        thirdNavigationController]
+                           thirdNavigationController]
     }
     
     private func setUpLayout(){
         tabBar.barTintColor = .systemOrange
         tabBar.tintColor = UIColor(named: SystemEnum.gokuBlue.rawValue)
-         
     }
-
-    
 }

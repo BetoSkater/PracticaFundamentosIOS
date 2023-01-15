@@ -9,14 +9,12 @@ import Foundation
 
 final class LocalDataLayer{
     
-    
     private static let token = "token"
     private static let heroes = "heroes"
     //Singleton
     static let shared = LocalDataLayer()
     
     //MARK: - TOKEN -
-    
     
     func save(token: String){
         return UserDefaults.standard.set(token, forKey: Self.token)
@@ -27,7 +25,7 @@ final class LocalDataLayer{
     }
     
     func deleteToken() -> (){
-        UserDefaults.standard.removeObject(forKey: Self.token) 
+        UserDefaults.standard.removeObject(forKey: Self.token)
     }
     
     //MARK: - User login related data. -
@@ -35,6 +33,4 @@ final class LocalDataLayer{
     func isUserLogged() -> Bool {
         return !getToken().isEmpty
     }
-    
-    
 }

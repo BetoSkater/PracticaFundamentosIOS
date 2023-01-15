@@ -8,14 +8,14 @@
 import UIKit
 
 class CollectionViewController: BaseViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var favHeroList:[Heroe]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -25,30 +25,27 @@ class CollectionViewController: BaseViewController {
         collectionView.register(xib, forCellWithReuseIdentifier: SystemEnum.characterCollectionCell.rawValue)
         
         let token = LocalDataLayer.shared.getToken()
-        //TODO: Call the function to retrive the favedHeroes
+        
         retrieveFavedHeroes(token: token)
     }
-
-     func retrieveFavedHeroes(token: String)->(){
+    
+    func retrieveFavedHeroes(token: String)->(){
         NetworkLayer.shared.retrieveHeroes(token: token) { [weak self] listOfHeroes, error in
             
             if let listOfHeroes = listOfHeroes{
                 //TODO: try to fix the unwrap of self. I do not understant it quite well yet.
                 self!.favHeroList = listOfHeroes.filter {$0.favorite == true}
-               
-                //TODO: Check that this work
+                
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                 }
             }
         }
     }
-    
-
 }
 //MARK: - CollectionView Delegate and Data Source Methods -
 extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource,
-    UICollectionViewDelegateFlowLayout{
+                                    UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return favHeroList?.count ?? -1
@@ -56,7 +53,7 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SystemEnum.characterCollectionCell.rawValue, for: indexPath) as! CollectionViewCell
-
+        
         if let favedHeroes = favHeroList{
             let favHero = favedHeroes[indexPath.row]
             cell.collectionImageView.setImage(url: favHero.photo)
@@ -84,13 +81,12 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 }
 
-//MARK: - Image Extension in CollectionView -
-
 //MARK: - Extension to conform the protocol HeroUpdaterDelegate -
-
+//TODO: Fix.
+//Debugger never enters here because the delegate set in DetailsView is the TableViewController one.
 extension CollectionViewController: HeroUpdaterDelegate{
     func heroWasModified(updated heroe: Heroe) {
-       print("print at collectionView func hero was modified")
+        print("print at collectionView func hero was modified")
         if var theFavHeroList = self.favHeroList{
             let heroeIndex = theFavHeroList.firstIndex{ $0.id == heroe.id} ?? -1
             theFavHeroList[heroeIndex].favorite = heroe.favorite
@@ -103,6 +99,4 @@ extension CollectionViewController: HeroUpdaterDelegate{
             //TODO: find out which of the reloadData is the one working
         }
     }
-    
-    
 }

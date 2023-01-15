@@ -8,16 +8,13 @@
 import UIKit
 
 class DetailsViewController: BaseViewController {
-    //TODO: Add an scrollview at least in the description. It would be better to add it to the whole view.
+    
     @IBOutlet weak var detailsImageView: UIImageView!
     @IBOutlet weak var detailsNameLabel: UILabel!
     @IBOutlet weak var detailsDescLabel: UILabel!
     @IBOutlet weak var transformationButton: UIButton!
     @IBOutlet weak var favButton: UIButton!
     
-    
-    //TODO: Extract enum as it is the same as the one in TableView
-    //Ok is not the same, but is similar, it all can go in the same enum.
     enum DataList{
         case hero
         case transformation
@@ -27,44 +24,39 @@ class DetailsViewController: BaseViewController {
     var heroe : Heroe?
     var transformation: Transformation?
     var heroTransformationsList:[Transformation]?
-    let token = LocalDataLayer.shared.getToken() //Moved from viewDidLoad so the button can access it.
-    
+    let token = LocalDataLayer.shared.getToken()
     var delegate: HeroUpdaterDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         transformationButton.isHidden = true
         transformationButton.layer.cornerRadius = 10
+        
         if let detailType = dataToShow{
-            
             switch detailType{
             case .hero:
                 //TODO: Should I unwrap the optional with an if let?
-                //In theory, if we get here with the enum, it should have data in everycase unless sone field is empty
+                //In theory, if we get here with the enum, it should have data in everycase unless some field is empty
                 detailsImageView.setImage(url: heroe?.photo ?? "")
-                detailsNameLabel.text = heroe?.name ?? "...**"
-                detailsDescLabel.text = heroe?.description ?? "...***"
+                detailsNameLabel.text = heroe?.name ?? ""
+                detailsDescLabel.text = heroe?.description ?? ""
                 if heroe?.favorite ?? false{
                     favButton.setImage(UIImage(systemName: SystemEnum.starFill.rawValue), for: .normal)
                 }
-                
                 //TODO: modify button just in case.
                 loadHeroTransformations(token: token , heroId: heroe?.id ?? MiscValues.emptyValue.rawValue)
                 
             case .transformation: detailsImageView.setImage(url: transformation?.photo ?? "")
-                detailsNameLabel.text = transformation?.name ?? "...**"
-                detailsDescLabel.text = transformation?.description ?? "...***"
+                detailsNameLabel.text = transformation?.name ?? ""
+                detailsDescLabel.text = transformation?.description ?? ""
+                
                 transformationButton.isHidden = true
                 favButton.isHidden = true
-            default: break
             }
         }
     }
-
-
-   
+    //MARK: - Buttons Actions -
     @IBAction func transformationButtonTapped(_ sender: UIButton) {
         let transformationView = TableViewController()
         if let dataType = dataToShow{
@@ -76,11 +68,9 @@ class DetailsViewController: BaseViewController {
                     navigationController?.pushViewController(transformationView, animated: true)
                 }
             case .transformation: break
-            default: break
             }
         }
     }
-    
     
     @IBAction func favButtonTapped(_ sender: UIButton) {
         //TODO: add favourite functionality here in the button
@@ -90,8 +80,7 @@ class DetailsViewController: BaseViewController {
             favUnfav(token: token, and: heroe)
         }
     }
-    
-    
+    //MARK: -Class Methods-
     func loadHeroTransformations(token: String?,heroId: String?)->(){
         
         NetworkLayer.shared.retrieveTransformations(token: token, heroId: heroId) { [weak self] transformations, error in
@@ -103,21 +92,17 @@ class DetailsViewController: BaseViewController {
                 if !transformations.isEmpty{
                     DispatchQueue.main.async {
                         self.transformationButton.isHidden = false
-                            print("---->>TRANSFORMATION COUNT = \(transformations.count)")
-                        }
+                        print("---->>TRANSFORMATION COUNT = \(transformations.count)")
+                    }
                 }else{
                     print("---->> \(self.heroe?.name ?? "char") doesn't have transformations")
                 }
-                    
-                
             }else{
                 print("Error retrieven transformations: ",  error?.localizedDescription ?? MiscValues.emptyValue.rawValue)
             }
         }
-        
     }
     
-   // func favUnfav(token: String, heroId: String, liked: Bool)->(){
     func favUnfav(token: String, and heroe: Heroe)->(){
         var updatedHeroe = heroe
         NetworkLayer.shared.setFavourite(token: token, heroId: heroe.id) { response, error in
@@ -126,28 +111,26 @@ class DetailsViewController: BaseViewController {
                 print("\(response.statusCode)   in detailsView")
                 
                 DispatchQueue.main.async {
-                   print("Inside DispatchQueue")
+                    print("Inside DispatchQueue")
                     if heroe.favorite{
                         self.favButton.setImage(UIImage(systemName: SystemEnum.star.rawValue), for: .normal)
-                            updatedHeroe.favorite = !heroe.favorite
-                            print("unliked")
+                        updatedHeroe.favorite = !heroe.favorite
+                        print("unliked")
                     }else{
                         self.favButton.setImage(UIImage(systemName: SystemEnum.starFill.rawValue), for: .normal)
-                            updatedHeroe.favorite = !heroe.favorite
-                            
-                                           print("liked")
+                        updatedHeroe.favorite = !heroe.favorite
+                        print("liked")
                     }//else
                     if self.delegate != nil{
-                        
                         self.delegate?.heroWasModified(updated: updatedHeroe)
-                        
                     }
                 }//DispatchQueue
             }
         }//Network
-       // return updatedHeroe
+        // return updatedHeroe
     }//func favunfav
 }
+//MARK: - Protocol HeroUpdaterDelegate -
 protocol HeroUpdaterDelegate{
     func heroWasModified(updated heroe: Heroe)
 }

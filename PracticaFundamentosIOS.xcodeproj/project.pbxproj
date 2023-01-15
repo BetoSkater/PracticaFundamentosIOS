@@ -22,7 +22,6 @@
 		D37F0DA3297420040083537B /* Heroe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DB9B1296C9105001AEEA8 /* Heroe.swift */; };
 		D37F0DA7297428030083537B /* TransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F0DA6297428030083537B /* TransformationTest.swift */; };
 		D37F0DA8297428580083537B /* Transformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37B8307296D87FB0047DC6D /* Transformation.swift */; };
-		D37F0DA92974285E0083537B /* TextEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38439A92965A08700529DAC /* TextEnum.swift */; };
 		D380A0FA2965DB2500205547 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D380A0F82965DB2500205547 /* LaunchScreen.storyboard */; };
 		D380A0FB2965DB2500205547 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D380A0F82965DB2500205547 /* LaunchScreen.storyboard */; };
 		D380A0FC2965DB2500205547 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D380A0F82965DB2500205547 /* LaunchScreen.storyboard */; };
@@ -30,7 +29,6 @@
 		D380A1032966101D00205547 /* CollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D380A1012966101D00205547 /* CollectionViewController.xib */; };
 		D380A1072966105500205547 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380A1052966105500205547 /* CollectionViewCell.swift */; };
 		D380A1082966105500205547 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D380A1062966105500205547 /* CollectionViewCell.xib */; };
-		D382837F2973365400842361 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D382837E2973365400842361 /* Tools.swift */; };
 		D38439A829659C9300529DAC /* SystemEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38439A729659C9300529DAC /* SystemEnum.swift */; };
 		D38439AA2965A08700529DAC /* TextEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38439A92965A08700529DAC /* TextEnum.swift */; };
 		D3AF244D2966E73C0096F9A4 /* LocalDataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AF244C2966E73C0096F9A4 /* LocalDataLayer.swift */; };
@@ -81,7 +79,6 @@
 		D380A1012966101D00205547 /* CollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewController.xib; sourceTree = "<group>"; };
 		D380A1052966105500205547 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		D380A1062966105500205547 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
-		D382837E2973365400842361 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		D38439A729659C9300529DAC /* SystemEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemEnum.swift; sourceTree = "<group>"; };
 		D38439A92965A08700529DAC /* TextEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEnum.swift; sourceTree = "<group>"; };
 		D3AF244C2966E73C0096F9A4 /* LocalDataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataLayer.swift; sourceTree = "<group>"; };
@@ -125,6 +122,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D3473144297485A600A1CC2F /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				D38439A729659C9300529DAC /* SystemEnum.swift */,
+				D38439A92965A08700529DAC /* TextEnum.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		D37B1DEC2963262A0020BBFE /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,11 +268,9 @@
 		D3BE583A2962F42100837903 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D38439A729659C9300529DAC /* SystemEnum.swift */,
-				D38439A92965A08700529DAC /* TextEnum.swift */,
+				D3473144297485A600A1CC2F /* Enums */,
 				D37DB9B1296C9105001AEEA8 /* Heroe.swift */,
 				D37B8307296D87FB0047DC6D /* Transformation.swift */,
-				D382837E2973365400842361 /* Tools.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -457,7 +461,6 @@
 				D37B1DEF296326610020BBFE /* TableViewController.swift in Sources */,
 				D37B8308296D87FB0047DC6D /* Transformation.swift in Sources */,
 				D38439AA2965A08700529DAC /* TextEnum.swift in Sources */,
-				D382837F2973365400842361 /* Tools.swift in Sources */,
 				D3BE583F2962F8C400837903 /* BaseViewController.swift in Sources */,
 				D3BE5846296307D900837903 /* HomeTabBarController.swift in Sources */,
 				D3BE58082962EA9A00837903 /* AppDelegate.swift in Sources */,
@@ -475,7 +478,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D37F0DA7297428030083537B /* TransformationTest.swift in Sources */,
-				D37F0DA92974285E0083537B /* TextEnum.swift in Sources */,
 				D37F0DA229741EEB0083537B /* HeroeTest.swift in Sources */,
 				D37F0DA3297420040083537B /* Heroe.swift in Sources */,
 				D37F0DA8297428580083537B /* Transformation.swift in Sources */,

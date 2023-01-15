@@ -8,6 +8,7 @@
 import Foundation
 
 enum SystemEnum:String{
+    //MARK: General
     case listIcon = "list.bullet.clipboard.fill"
     case collectionIcon = "circle.grid.3x3.circle.fill"
     case sevenDragonBalls = "circle.hexagongrid.circle.fill"
@@ -16,16 +17,17 @@ enum SystemEnum:String{
     case star = "star"
     case starFill = "star.fill"
     case settingsGear = "gearshape.fill"
-    //Custom Colors
+    
+    //MARK: Custom Colors
     case gokuBlue = "GokuBlue"
-    //TableView
+    //MARK: TableView
     case characterCell = "characterTableCell"
     case tableViewCell = "TableViewCell"
-
-    //CollectionView
+    
+    //MARK: CollectionView
     case characterCollectionCell = "characterCollectionCell"
     case collectionViewCell = "CollectionViewCell"
-         
+    
 }
 
 
